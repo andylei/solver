@@ -68,7 +68,7 @@ function matches_count(queryc, wordc) {
 }
 
 function matches_inexact_count(qlen, queryc, word, wordc) {
-  if (qlen < word.length) {
+  if (qlen > word.length) {
     return false;
   }
   return matches_count(queryc, wordc);
@@ -137,7 +137,7 @@ function App() {
   const [matchMode, cycleMatchMode] = useCycler(['pattern', 'anagram']);
   const [opts, setOpts] = useState();
   const search = useCallback(() => setOpts({
-    query: qInput,
+    query: qInput.toLowerCase(),
     use_wiki: wWiki,
     use_nyc: wNyc,
     use_dict: wDict,
