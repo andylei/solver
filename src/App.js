@@ -116,7 +116,7 @@ function search(opts) {
 
 function _Results(props) {
   const results = search(props);
-  if (!results.length) {
+  if (!results.length && props.query) {
     return <div>
       No results
     </div>
